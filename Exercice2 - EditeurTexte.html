@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3.0.0"></script>
+    <title>Editeur Texte</title>
+</head>
+<body>
+    <p> Zone de texte : </p>
+    <div id="app">
+        <textarea v-model="message" type="text"></textarea>
+        <p> Le message transmis dans la zone de texte est : {{message}}</p>
+    </div>
+    <script>
+        const app = Vue.createApp({
+            data(){
+                return{
+                    message: ''  // Valeur initiale vide 
+                }
+            },
+        })
+    app.mount('#app')
+    </script>
+
+</body>
+</html>

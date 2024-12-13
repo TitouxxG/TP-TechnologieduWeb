@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://unpkg.com/vue@3.0.0"></script>
+        <title>CompteurClic</title>
+    </head>
+    <body>
+        <div id="app">
+
+            <button v-on:click="incrementerCompteur">Cliquez-moi</button>
+            <p>Le nombre total de clic est : {{ compteur }} </p>
+         
+        </div>
+    <script>
+        const app = Vue.createApp({
+        data() {
+            return {
+                compteur: 0 // Initialisation du compteur à 0
+            }
+        },
+        methods: {
+            incrementerCompteur() {
+                this.compteur++;
+            }
+        },
+    });
+
+    app.mount('#app');
+    </script>
+    </body>
+
+</html>

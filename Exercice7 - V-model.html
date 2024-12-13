@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3.0.0"></script>
+    <title>TD Vue JS</title>
+</head>
+<body>
+    <div id="app">
+        <input type="checkbox" v-model="isChecked">
+        <label>{{isChecked ? 'Coché' : 'Décoché'}}</label>
+    </div>
+</body>
+<script>
+    const app = Vue.createApp({
+        data(){
+            return{
+                isChecked : false
+            };
+        }
+    });
+    app.mount('#app');
+</script>
+</html>

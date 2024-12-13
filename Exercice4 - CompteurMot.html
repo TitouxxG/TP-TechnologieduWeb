@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compteur de Mot</title>
+    <script src="https://unpkg.com/vue@3.0.0"></script>
+</head>
+<body>
+    <div id="app">
+        <textarea v-model="Mots" type="text"></textarea>
+        <p> Nombre de mots saisi : {{ nombreDeMots  }}</p>
+    </div>
+    <script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                Mots: ''  // Valeur initiale vide
+            };
+        },
+        computed: {
+            nombreDeMots() {
+                // Compte le nombre de mots en utilisant un split basé sur les espaces
+                return this.Mots.trim().length > 0 ? this.Mots.trim().split(/\s+/).length : 0;
+            }
+        }
+    });
+    app.mount('#app');
+    </script>
+</body>
+</html>

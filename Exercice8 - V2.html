@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Vue.js 3 Example</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{ compteur }}</h1>
+        <button v-on:click="incrementerCompteur">Incrémenter</button>
+        <button @click="decrementerCompteur">Décrémenter</button>
+    </div>
+    <script>
+        new Vue ({
+            el: '#app',
+            data() {
+                return {
+                    compteur: 0
+                }
+            },
+            methods: {
+                incrementerCompteur(){
+                    this.compteur++;
+                },
+                decrementerCompteur(){
+                    this.compteur--;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

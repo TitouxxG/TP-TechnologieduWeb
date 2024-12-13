@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3.0.0"></script>
+    <title>TD Vue JS</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="nom" placeholder="Entrez votre nom ici">
+        <button @click="welcome">Entrez le message de bienvenue</button>
+        <p v-if="message">{{ message }}</p>
+    </div>
+</body>
+<script>
+    const app = Vue.createApp({
+        data(){
+            return{
+                nom : "",
+                message : ""
+            };
+        },
+        methods: {
+            welcome() {
+                    if (this.nom.trim()) {
+                        this.message = `Bienvenue, ${this.nom} !`;
+                    } else {
+                        this.message = '';
+                    }
+                }
+        }
+    });
+    app.mount('#app');
+</script>
+
+
+</html>

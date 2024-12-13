@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Réservation d'Hôtel</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>Réservation d'Hôtel</h1>
+
+        <form @submit.prevent="validerReservation">
+            <label for="nom">Nom :</label>
+            <input type="text" id="nom" v-model="nom" required>
+            <br>
+            <label for="email">Email :</label>
+            <input type="email" id="email" v-model="email" required>
+            <br>
+            <label for="dateArrivee">Date d'arrivée :</label>
+            <input type="date" id="dateArrivee" v-model="dateArrivee" @change="calculerNbNuits" required>
+            <br>
+
+            <label for="dateDepart">Date de départ :</label>
+            <input type="date" id="dateDepart" v-model="dateDepart" @change="calculerNbNuits" required>
+            <br>
+            <button type="submit">Valider la réservation</button>
+        </form>
+        <div v-if="nom && email && dateArrivee && dateDepart && nbNuits >= 0">
+            <h2>Détails de la réservation :</h2>
+            <p>Nom : {{ nom }}</p>
+            <p>Email : {{ email }}</p>
+            <p>Date d'arrivée : {{ dateArrivee }}</p>
+            <p>Date de départ : {{ dateDepart }}</p>
+            <p>Nombre de nuits : {{ nbNuits }}</p>
+            <p>Coût total : {{ nbNuits * tarif }} €</p>
+        </div>
+    </div>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    nom: '',
+                    email: '',
+                    dateArrivee: '',
+                    dateDepart: '',
+                    nbNuits: 0,
+                    tarif: 100 // Tarif par nuit
+                };
+            },
+            methods: {
+                calculerNbNuits() {
+                    if (this.dateArrivee && this.dateDepart) {
+                        const arrivee = new Date(this.dateArrivee);
+                        const depart = new Date(this.dateDepart);
+
+                        if (depart > arrivee) {
+                            this.nbNuits = (depart - arrivee) / (1000 * 60 * 60 * 24);
+                        } else {
+                            this.nbNuits = 0;
+                        }
+                    }
+                },
+                validerReservation() {
+                    alert("Réservation validée pour " + this.nom);
+                }
+            }
+        });
+
+        app.mount('#app');
+    </script>
+</body>
+</html>

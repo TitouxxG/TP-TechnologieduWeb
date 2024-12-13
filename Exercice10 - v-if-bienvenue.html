@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenue Multilingue</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>Bienvenue Multilingue</h1>
+        <p v-if="language === 'en'">Welcome!</p>
+        <p v-if="language === 'fr'">Bienvenue!</p>
+        <p v-if="language === 'es'">¡Bienvenido!</p>
+        <p v-if="language === 'de'">Willkommen!</p>
+
+        <div>
+            <button @click="setLanguage('en')">English</button>
+            <button @click="setLanguage('fr')">Français</button>
+            <button @click="setLanguage('es')">Español</button>
+            <button @click="setLanguage('de')">Deutsch</button>
+        </div>
+    </div>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    language: 'en' 
+                };
+            },
+            methods: {
+                setLanguage(lang) {
+                    this.language = lang;
+                }
+            }
+        });
+
+        app.mount('#app');
+    </script>
+</body>
+</html>

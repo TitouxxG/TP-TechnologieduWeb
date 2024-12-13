@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3.0.0"></script>
+    <title>Changement de message</title>
+</head>
+<body>
+    <div id="app">
+        <button @click="click"> Cliquez-moi</button>
+        <p v-if="isTrue">La condition est vraie</p>
+        <p v-else>La condition est fausse</p>
+    </div>
+
+    <script>
+        const app =Vue.createApp({
+            data() {
+                return {
+                    isTrue : true
+                }
+            },
+            methods: {
+                click(){
+                    this.isTrue =!this.isTrue
+                }
+            }
+        })
+        app.mount('#app');
+    </script>
+    
+</body>
+</html>
